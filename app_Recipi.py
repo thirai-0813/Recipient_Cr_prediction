@@ -64,7 +64,11 @@ if st.button("計算する"):
         
         # Medianの計算
         median_average = calculate_median(values)
-        st.success(f"あなたの移植後2週間目の予測クレアチニン値は以下の通りです（単位mg/dL): {median_average}")
+
+        # 小数点2桁にフォーマット
+        formatted_result = round(median_average, 2)
+
+        st.success(f"あなたの移植後2週間目の予測クレアチニン値は以下の通りです（単位mg/dL): {formatted_result}")
 
         # 注意書き
         st.write("""
