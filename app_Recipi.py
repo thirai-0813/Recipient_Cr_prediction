@@ -5,8 +5,13 @@ import numpy as np
 def calculate_median(values):
     return np.median(values)
 
-# StreamlitアプリのUI
-st.title("MedianAverage計算ツール")
+# タイトルと概要
+st.title("移植後2週間目の予測Cr値")
+st.write("""
+このアプリは術前のドナー、レシピエントのデータを入力して
+移植後2週間目のクレアチニン値を計算するツールです。
+""")
+
 
 # ユーザー入力
 DonorAge = st.number_input("Donor Age (ドナーの年齢)", min_value=0.0, value=30.0, step=1.0)
@@ -59,9 +64,16 @@ if st.button("計算する"):
     
     # Medianの計算
     median_average = calculate_median(values)
-    st.success(f"Median Average: {median_average}")
+    st.success(f"あなたの移植後2週間目の予測クレアチニン値は以下の通りです（単位mg/dL): {result:.2f}")  # 小数点2桁で表示
+        : {median_average}")
 
-
+# 注意書き
+        st.write("""
+        **この結果は東京女子医科大学泌尿器科で実際に腎提供された患者さまのデータを元に算出しています。
+        実際の測定値とは異なる可能性があることをご了承ください。**
+        """)
+    except Exception as e:
+        st.error(f"エラーが発生しました: {e}")
 
 
 
